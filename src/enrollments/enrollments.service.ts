@@ -1,3 +1,4 @@
+import { ConfigService } from '@nestjs/config';
 import {
   BadRequestException,
   ConflictException,
@@ -11,7 +12,10 @@ import { CreateEnrollmentDto } from './dto/create-enrollment.dto.js';
 
 @Injectable()
 export class EnrollmentsService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly config: ConfigService,
+  ) {}
 
   async create(dto: CreateEnrollmentDto) {
     const student = await this.prisma.user.findUnique({
@@ -31,9 +35,8 @@ export class EnrollmentsService {
       throw new NotFoundException(`Curso ${dto.courseId} no encontrado`);
     }
 
-    const maxStudents = parseInt(
-      process.env.MAX_STUDENTS_PER_COURSE ?? '30',
-      10,
+    const maxStudents = this.config.getOrThrow<number>(
+      'MAX_STUDENTS_PER_COURSE',
     );
     if (course._count.enrollments >= maxStudents) {
       throw new BadRequestException(

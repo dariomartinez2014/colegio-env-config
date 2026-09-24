@@ -1,3 +1,4 @@
+import { ConfigService } from '@nestjs/config';
 import { Module } from '@nestjs/common';
 import { JwtModule, JwtModuleOptions } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
@@ -12,9 +13,14 @@ type ExpiresIn = NonNullable<JwtModuleOptions['signOptions']>['expiresIn'];
   imports: [
     UsersModule,
     PassportModule,
-    JwtModule.register({
-      secret: process.env.JWT_SECRET,
-      signOptions: { expiresIn: process.env.JWT_EXPIRES_IN as ExpiresIn },
+    JwtModule.registerAsync({
+      inject: [ConfigService],
+      useFactory: (config: ConfigService) => ({
+        secret: config.getOrThrow<string>('JWT_SECRET'),
+        signOptions: {
+          expiresIn: config.getOrThrow<ExpiresIn>('JWT_EXPIRES_IN'),
+        },
+      }),
     }),
   ],
   controllers: [AuthController],

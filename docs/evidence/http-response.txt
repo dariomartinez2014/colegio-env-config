@@ -1,0 +1,2 @@
+HTTP 200
+{"school":"Unidad Educativa Funval","environment":"development","status":"ok"}
