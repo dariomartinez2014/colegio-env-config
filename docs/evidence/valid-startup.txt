@@ -1,0 +1,44 @@
+[Nest] 20908  - 24/09/2026, 1:25:12 p. m.     LOG [NestFactory] Starting Nest application...
+[Nest] 20908  - 24/09/2026, 1:25:12 p. m.     LOG [InstanceLoader] PassportModule dependencies initialized +7ms
+[Nest] 20908  - 24/09/2026, 1:25:12 p. m.     LOG [InstanceLoader] ConfigHostModule dependencies initialized +0ms
+[Nest] 20908  - 24/09/2026, 1:25:12 p. m.     LOG [InstanceLoader] ConfigModule dependencies initialized +2ms
+[Nest] 20908  - 24/09/2026, 1:25:12 p. m.     LOG [InstanceLoader] PrismaModule dependencies initialized +1ms
+[Nest] 20908  - 24/09/2026, 1:25:12 p. m.     LOG [InstanceLoader] JwtModule dependencies initialized +0ms
+[Nest] 20908  - 24/09/2026, 1:25:12 p. m.     LOG [InstanceLoader] AppModule dependencies initialized +0ms
+[Nest] 20908  - 24/09/2026, 1:25:12 p. m.     LOG [InstanceLoader] UsersModule dependencies initialized +1ms
+[Nest] 20908  - 24/09/2026, 1:25:12 p. m.     LOG [InstanceLoader] CoursesModule dependencies initialized +0ms
+[Nest] 20908  - 24/09/2026, 1:25:12 p. m.     LOG [InstanceLoader] SubjectsModule dependencies initialized +0ms
+[Nest] 20908  - 24/09/2026, 1:25:12 p. m.     LOG [InstanceLoader] EnrollmentsModule dependencies initialized +0ms
+[Nest] 20908  - 24/09/2026, 1:25:12 p. m.     LOG [InstanceLoader] GradesModule dependencies initialized +0ms
+[Nest] 20908  - 24/09/2026, 1:25:12 p. m.     LOG [InstanceLoader] AuthModule dependencies initialized +0ms
+[Nest] 20908  - 24/09/2026, 1:25:12 p. m.     LOG [RoutesResolver] AppController {/api}: +7ms
+[Nest] 20908  - 24/09/2026, 1:25:12 p. m.     LOG [RouterExplorer] Mapped {/api, GET} route +2ms
+[Nest] 20908  - 24/09/2026, 1:25:12 p. m.     LOG [RoutesResolver] AuthController {/api/auth}: +0ms
+[Nest] 20908  - 24/09/2026, 1:25:12 p. m.     LOG [RouterExplorer] Mapped {/api/auth/register, POST} route +0ms
+[Nest] 20908  - 24/09/2026, 1:25:12 p. m.     LOG [RouterExplorer] Mapped {/api/auth/login, POST} route +0ms
+[Nest] 20908  - 24/09/2026, 1:25:12 p. m.     LOG [RouterExplorer] Mapped {/api/auth/me, GET} route +1ms
+[Nest] 20908  - 24/09/2026, 1:25:12 p. m.     LOG [RoutesResolver] UsersController {/api/users}: +0ms
+[Nest] 20908  - 24/09/2026, 1:25:12 p. m.     LOG [RouterExplorer] Mapped {/api/users, GET} route +0ms
+[Nest] 20908  - 24/09/2026, 1:25:12 p. m.     LOG [RouterExplorer] Mapped {/api/users/:id, GET} route +0ms
+[Nest] 20908  - 24/09/2026, 1:25:12 p. m.     LOG [RouterExplorer] Mapped {/api/users/:id/role, PATCH} route +0ms
+[Nest] 20908  - 24/09/2026, 1:25:12 p. m.     LOG [RoutesResolver] CoursesController {/api/courses}: +0ms
+[Nest] 20908  - 24/09/2026, 1:25:12 p. m.     LOG [RouterExplorer] Mapped {/api/courses, GET} route +0ms
+[Nest] 20908  - 24/09/2026, 1:25:12 p. m.     LOG [RouterExplorer] Mapped {/api/courses/:id, GET} route +1ms
+[Nest] 20908  - 24/09/2026, 1:25:12 p. m.     LOG [RouterExplorer] Mapped {/api/courses, POST} route +0ms
+[Nest] 20908  - 24/09/2026, 1:25:12 p. m.     LOG [RouterExplorer] Mapped {/api/courses/:id, PATCH} route +0ms
+[Nest] 20908  - 24/09/2026, 1:25:12 p. m.     LOG [RouterExplorer] Mapped {/api/courses/:id, DELETE} route +0ms
+[Nest] 20908  - 24/09/2026, 1:25:12 p. m.     LOG [RoutesResolver] SubjectsController {/api/subjects}: +0ms
+[Nest] 20908  - 24/09/2026, 1:25:12 p. m.     LOG [RouterExplorer] Mapped {/api/subjects, GET} route +0ms
+[Nest] 20908  - 24/09/2026, 1:25:12 p. m.     LOG [RouterExplorer] Mapped {/api/subjects/:id, GET} route +0ms
+[Nest] 20908  - 24/09/2026, 1:25:12 p. m.     LOG [RouterExplorer] Mapped {/api/subjects, POST} route +0ms
+[Nest] 20908  - 24/09/2026, 1:25:12 p. m.     LOG [RouterExplorer] Mapped {/api/subjects/:id, PATCH} route +0ms
+[Nest] 20908  - 24/09/2026, 1:25:12 p. m.     LOG [RouterExplorer] Mapped {/api/subjects/:id, DELETE} route +0ms
+[Nest] 20908  - 24/09/2026, 1:25:12 p. m.     LOG [RoutesResolver] EnrollmentsController {/api/enrollments}: +0ms
+[Nest] 20908  - 24/09/2026, 1:25:12 p. m.     LOG [RouterExplorer] Mapped {/api/enrollments, POST} route +1ms
+[Nest] 20908  - 24/09/2026, 1:25:12 p. m.     LOG [RouterExplorer] Mapped {/api/enrollments, GET} route +0ms
+[Nest] 20908  - 24/09/2026, 1:25:12 p. m.     LOG [RouterExplorer] Mapped {/api/enrollments/:id, DELETE} route +0ms
+[Nest] 20908  - 24/09/2026, 1:25:12 p. m.     LOG [RoutesResolver] GradesController {/api/grades}: +0ms
+[Nest] 20908  - 24/09/2026, 1:25:12 p. m.     LOG [RouterExplorer] Mapped {/api/grades, POST} route +0ms
+[Nest] 20908  - 24/09/2026, 1:25:12 p. m.     LOG [RouterExplorer] Mapped {/api/grades/student/:studentId, GET} route +0ms
+[Nest] 20908  - 24/09/2026, 1:25:12 p. m.     LOG [NestApplication] Nest application successfully started +2ms
+🏫 API escuchando en http://localhost:3000
