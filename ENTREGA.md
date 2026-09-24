@@ -1,27 +1,43 @@
-# Entrega: configuración de entornos
+# Configuración de entornos
 
-La validación de las 10 variables está en `src/config/env.validation.ts`. ConfigModule es global y el único cargador de .env dentro de src. JWT usa registerAsync para resolver la configuración mediante inyección. Los demás servicios consumen los valores convertidos y validados con ConfigService.
+## Qué cambió
 
-Validar al arrancar evita atender peticiones con una configuración incompleta. Los errores se detectan juntos antes del login o de las operaciones de negocio, en vez de manifestarse como fallos tardíos difíciles de diagnosticar.
+Las reglas de las 10 variables están en `src/config/env.validation.ts`. Joi comprueba los valores cuando inicia la aplicación. Si falta una variable obligatoria o tiene un valor incorrecto, la aplicación no arranca.
 
-## Verificación
+`ConfigModule` se registra una sola vez en `AppModule` y es global. Los servicios usan `ConfigService` para leer la configuración. En JWT se usa `registerAsync` para obtener el secreto y la duración después de cargar las variables.
 
-- Cliente Prisma generado y compilación correcta.
-- `npm run test:config`: 26 casos inválidos, cuatro valores por defecto, variables adicionales del sistema y errores agrupados.
-- HTTP, JWT con duración personalizada, rutas protegidas 200/401, rondas bcrypt, umbral de aprobación y límite de cupos. Persistencia simulada en estas pruebas.
-- Arranque real de main y GET /api con HTTP 200. No se aplicaron migraciones ni se verificó una conexión real a PostgreSQL.
-- Arranque con cinco variables inválidas: salida 1 y todos los errores juntos.
-- Sin lecturas de process.env ni carga manual de dotenv en src, excluyendo código generado.
-- .env.example válido y .env ignorado por Git.
+Por ejemplo, `PORT=abc` produce un error al iniciar. Es mejor encontrarlo en ese momento que esperar a que alguien intente usar la API. Lo mismo ocurre si el secreto de JWT es demasiado corto.
+
+En el esquema:
+
+- `required()` indica que la variable es obligatoria.
+- `default()` establece un valor cuando la variable no está definida.
+- `abortEarly: false` permite mostrar todos los errores juntos.
+- `allowUnknown: true` permite otras variables del sistema operativo.
+
+## Pruebas
+
+La compilación pasó. También se comprobó el arranque y la respuesta de `/api`. Con varias variables incorrectas, la consola mostró los errores juntos.
+
+El comando `npm run test:config` revisa las reglas, los valores por defecto, el login, las rutas protegidas, las rondas de bcrypt, la nota mínima y el cupo de estudiantes. Estas pruebas simulan el acceso a datos; no comprueban una base PostgreSQL real.
+
+`.env.example` contiene valores válidos de ejemplo. `.env` está ignorado por Git y no se sube al repositorio.
 
 ## Evidencias
 
-Estas imágenes son visualizaciones de los registros reales de consola, no capturas del escritorio. Se incluyen los archivos de texto originales para comprobarlas.
+Las imágenes muestran los registros reales de las pruebas. Son imágenes generadas a partir del texto, no capturas del escritorio; quedan pendientes las capturas literales que pide la consigna.
 
 ![Arranque correcto](docs/evidence/valid-startup.png)
 
-![Errores agrupados](docs/evidence/invalid-startup.png)
+![Errores de configuración](docs/evidence/invalid-startup.png)
 
-Registros: [arranque](docs/evidence/valid-startup.txt), [errores](docs/evidence/invalid-startup.txt), [HTTP](docs/evidence/http-response.txt).
+También están los registros originales: [arranque](docs/evidence/valid-startup.txt), [errores](docs/evidence/invalid-startup.txt) y [respuesta HTTP](docs/evidence/http-response.txt).
 
-Para reproducir: npm install, copiar .env.example a .env, configurar PostgreSQL, npm run db:generate, npm run build y npm run start:prod. Las pruebas automatizadas se ejecutan con npm run test:config.
+## Cómo ejecutarlo
+
+1. Ejecutar `npm install`.
+2. Copiar `.env.example` a `.env` y configurar la conexión a PostgreSQL.
+3. Ejecutar `npm run db:generate` y `npm run build`.
+4. Iniciar con `npm run start:prod`.
+
+Para usar las rutas que consultan datos, primero hay que preparar PostgreSQL con las migraciones y el seed que indica el README.
